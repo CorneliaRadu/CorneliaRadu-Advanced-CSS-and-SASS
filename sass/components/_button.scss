@@ -1,0 +1,63 @@
+
+
+.btn{
+    &:link,  &:visited{
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 15px 40px;
+        display: inline-block;
+        border-radius: 100px;
+        transition: all .4s;
+        position: relative;
+    }
+    &:hover{
+        transform:translateY(-3px);
+        box-shadow:0 10px 20px rgba(0,0,0,.2);
+
+
+
+     &::after{
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity:0;
+    }
+    }
+    &:active{
+        transform: translateY(-1px);
+        box-shadow:0 5px 10px rgba(0,0,0,.2);
+    }
+    
+     &--white{
+         background-color:#fff;
+         color: $color-grey-dark;
+
+         &::after{
+            background-color:#fff;
+        }
+     }
+    
+     &::after{
+         content:"";
+         display:inline-block;
+         height: 100%;
+         width:100%;
+         position: absolute;
+         top:0;
+         left:0;
+         z-index: -1;
+         border-radius: 100px;
+         transition:all .4s;
+        
+     }
+    
+    
+    
+    
+    
+    &--animated{
+        animation: moveInButton .5s ease-out .75s;
+        /* seteaza animatia la 0% inainte ca elementul sa apara */
+        animation-fill-mode: backwards;
+    }
+}
+
+

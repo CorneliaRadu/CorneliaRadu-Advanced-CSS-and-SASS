@@ -1,0 +1,153 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+body {
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px); }
+  80% {
+    transform: translateX(30px); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /* plus 100 muta in dreapta(directia axei X), daca e minus muta spre stanga */
+    transform: translateX(100px); }
+  80% {
+    transform: translateX(-30px); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInButton {
+  0% {
+    opacity: 0;
+    /* plus 100 muta in dreapta(directia axei X), daca e minus muta spre stanga */
+    transform: translateY(30px); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* daca animatia face shaking ii va ascunde partea din spate sa nu fie vizibila, daca rotim mai ales */
+  backface-visibility: hidden;
+  margin-bottom: 60px; }
+  .heading-primary--main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* incepe incet si devine mai rapida pe final, invers pentru  ease out, se pot face custom cu cubic-bazier:animation-timing-function: ease-in;
+        de cate ori are loc animatia: animation-iteration-count: 4;
+        dupa cat timp sa inceapa animatia:animation-delay: 1s; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation: moveInRight 1s ease-out; }
+
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all .4s;
+  position: relative; }
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+
+.btn--white {
+  background-color: #fff;
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 100px;
+  transition: all .4s; }
+
+.btn--animated {
+  animation: moveInButton .5s ease-out .75s;
+  /* seteaza animatia la 0% inainte ca elementul sa apara */
+  animation-fill-mode: backwards; }
+
+.header {
+  height: 95vh;
+  /*95% din view port*/
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.6), rgba(40, 180, 133, 0.6)), url("../img/hero.jpg");
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px; }
+  .header__text-box {
+    /* absolute se raporteaza la parinte */
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* transform se raporteaza la elementul insui, 50% din latimea si inaltimea elementului */
+    transform: translate(-50%, -50%);
+    text-align: center; }
+  .header__logo {
+    height: 35px;
+    /* backface-visibility: hidden; */ }
+
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+/* .logo:hover{
+    animation: moveInLeft 1s;
+} */
